@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="service">
+    <page>/service.jspx</page>
+  </view>
+  <view id="maintainservice">
+    <page>/maintainservice.jspx</page>
+  </view>
+  <view id="creditandrebill">
+    <page>/creditandrebill.jspx</page>
+  </view>
+  <view id="setup">
+    <page>/setup.jspx</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome>adfMenu_service</from-outcome>
+      <to-activity-id>service</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__2">
+      <from-outcome>adfMenu_maintainservice</from-outcome>
+      <to-activity-id>maintainservice</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>adfMenu_creditrebill</from-outcome>
+      <to-activity-id>creditandrebill</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>adfMenu_setup</from-outcome>
+      <to-activity-id>setup</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__4">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>root_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__5">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__6">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/menu/root_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__9">
+    <managed-bean-name>InitializeUserTypePhaseListener</managed-bean-name>
+    <managed-bean-class>om.apps.sms.beans.InitializeUserTypePhaseListener</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

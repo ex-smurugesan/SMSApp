@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/homePG.jspx" usageId="view_homePGPageDef"/>
+    <page path="/service.jspx" usageId="view_servicePageDef"/>
+    <page path="/fragments/services.jsff" usageId="view_servicesPageDef"/>
+    <page path="/WEB-INF/servicetaskflow.xml#servicetaskflow@init"
+          usageId="view_servicetaskflow_servicetaskflow_initPageDef"/>
+    <page path="/setup.jspx" usageId="view_setupPageDef"/>
+    <page path="/fragments/setup.jsff" usageId="view_setupPageDef1"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_homePGPageDef" path="view.pageDefs.homePGPageDef"/>
+    <page id="view_servicePageDef" path="view.pageDefs.servicePageDef"/>
+    <page id="view_servicesPageDef" path="fragments.servicesPageDef"/>
+    <page id="view_servicetaskflow_servicetaskflow_initPageDef"
+          path="view.pageDefs.servicetaskflow_servicetaskflow_initPageDef"/>
+    <page id="view_setupPageDef" path="view.pageDefs.setupPageDef"/>
+    <page id="view_setupPageDef1" path="fragments.setupPageDef"/>
+  </pageDefinitionUsages>  
+  <dataControlUsages>
+    <BC4JDataControl id="SMSAMDataControl"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" syncMode="Immediate" Configuration="SMSAMLocal"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol" Package="om.apps.sms.model.modules"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XxhceHeSmsHeadersEOToXxhceHeSmsLinesEOAssoc"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="XxhceHeSmsHeadersEO"
+    Cardinality="1"
+    Source="true"
+    Owner="om.apps.sms.model.entities.XxhceHeSmsHeadersEO"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="XxhceHeSmsHeadersEO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsHeadersEO.HeaderId"/>
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsHeadersEO.OrgId"/>
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsHeadersEO.InvOrgId"/>
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsHeadersEO.ListHeaderId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="XxhceHeSmsLinesEO"
+    Cardinality="-1"
+    Owner="om.apps.sms.model.entities.XxhceHeSmsLinesEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="XxhceHeSmsLinesEO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsLinesEO.HeaderId"/>
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsLinesEO.OrgId"/>
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsLinesEO.InvOrgId"/>
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsLinesEO.ListHeaderId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

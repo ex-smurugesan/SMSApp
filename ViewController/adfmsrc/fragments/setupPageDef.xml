@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="setupPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxhceHeSmsSiteMtncEOVO" RangeSize="25" DataControl="SMSAMDataControl"
+              id="XxhceHeSmsSiteMtncEOVOIterator"/>
+    <iterator Binds="XxhceHeSmsSiteTypeEOVO" RangeSize="25" DataControl="SMSAMDataControl"
+              id="XxhceHeSmsSiteTypeEOVOIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="XxhceHeSmsSiteMtncEOVOIterator" id="XxhceHeSmsSiteMtncEOVO">
+      <nodeDefinition DefName="om.apps.sms.model.views.XxhceHeSmsSiteMtncEOVO" Name="XxhceHeSmsSiteMtncEOVO0">
+        <AttrNames>
+          <Item Value="SiteId"/>
+          <Item Value="OrganizationCode"/>
+          <Item Value="SiteDesc"/>
+          <Item Value="OrganizationId"/>
+          <Item Value="Status"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="addSetup" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addSetup"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.addSetup.dataControl.dataProvider"/>
+    <methodAction id="saveSetup" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveSetup"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.saveSetup.dataControl.dataProvider"/>
+    <tree IterBinding="XxhceHeSmsSiteTypeEOVOIterator" id="XxhceHeSmsSiteTypeEOVO">
+      <nodeDefinition DefName="om.apps.sms.model.views.XxhceHeSmsSiteTypeEOVO" Name="XxhceHeSmsSiteTypeEOVO0">
+        <AttrNames>
+          <Item Value="TypeName"/>
+          <Item Value="Status"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+         </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="addTypes" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addTypes"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.addTypes.dataControl.dataProvider"/>
+    <methodAction id="deleteTypes" RequiresUpdateModel="true" Action="invokeMethod" MethodName="deleteTypes"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.deleteTypes.dataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

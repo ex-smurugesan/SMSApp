@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="itemNode_service" label="#{viewcontrollerBundle.SERVICES}" action="adfMenu_service" focusViewId="/service"/>
+  <itemNode id="itemNode_maintainservice" label="#{viewcontrollerBundle.VIEW_AND_MAINTAIN_SERVICE}" action="adfMenu_maintainservice"
+            focusViewId="/maintainservice"/>
+  <itemNode id="itemNode_creditandrebill" label="#{viewcontrollerBundle.CREDIT_AND_REBILL}" action="adfMenu_creditrebill"
+            focusViewId="/creditandrebill"/>
+  <itemNode id="itemNode_setup" label="#{viewcontrollerBundle.SETUP}" action="adfMenu_setup" focusViewId="/setup"/>
+</menu>

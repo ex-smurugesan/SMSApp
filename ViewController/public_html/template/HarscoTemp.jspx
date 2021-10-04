@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+          <c:set var="viewcontrollerBundle"  value="#{adfBundle['om.apps.sms.bundle.viewcontrollerBundle']}"/>
+ <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>HarscoTemp</display-name>
+        <facet>
+          <facet-name>body</facet-name>
+        </facet>
+        <attribute>
+          <attribute-name>instanceName</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+        </attribute>
+        <attribute>
+          <attribute-name>panelText</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+        </attribute>
+        <attribute>
+          <attribute-name>
+            panelBoxTitle
+          </attribute-name>
+          <attribute-class>
+            java.lang.String
+          </attribute-class>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    <af:panelStretchLayout id="pt_psl1" bottomHeight="1px" topHeight="100px">
+      <f:facet name="top">
+        <af:panelGroupLayout layout="vertical"
+                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                             id="pt_pgl1">
+          <af:panelSplitter id="pt_ps1" styleClass="AFStretchWidth"
+                            splitterPosition="800" disabled="true">
+            <f:facet name="first">
+              <af:panelGroupLayout id="pt_pgl2" layout="horizontal">
+                <af:spacer width="10" height="10" id="pt_s8"/>
+                <af:image source="/images/SMS3.1_138x28.jpg" id="pt_i2"/>
+                <af:outputText value=" #{attrs.panelText}" id="pt_ot3"
+                               inlineStyle="font-size:small; font-weight:bold; color:Background;"/>
+              </af:panelGroupLayout>
+            </f:facet>
+            <f:facet name="second">
+              <af:panelGroupLayout id="pt_pgl4" layout="vertical" halign="end"
+                                   styleClass="AFStretchWidth">
+                <af:panelGroupLayout id="pt_pgl3" layout="horizontal"
+                                     halign="end" valign="middle"
+                                     styleClass="AFStretchWidth">
+                  <!--<af:goImageLink id="pt_gil1"
+                                  destination="http://hscuschlux00127.harsco.com:8009/"
+                                  targetFrame="_blank"
+                                  icon="/images/Oracle_Logo.gif"/>-->
+                  <af:spacer width="10" height="10" id="pt_s5"/>
+                  <af:goImageLink
+                                  id="pt_gl1" targetFrame="_blank"
+                                  destination="http://hscuschlws00292/KContent/102/data/toc.html"
+                                  icon="/images/Training_pic.png" text="#{viewcontrollerBundle.TRAINING_DOCUMENT}"/>
+                  <af:spacer width="10" height="10" id="pt_s3"/>
+                  <af:outputText value="#{attrs.instanceName}" id="pt_ot2"
+                                 styleClass="AFHeaderLevelTwo"/>
+                  <af:spacer width="10" height="1" id="pt_s1"/>
+                  <af:outputText value="#{viewcontrollerBundle.WELCOME}"
+                                 id="pt_ot1" styleClass="AFHeaderLevelTwo"
+                                 noWrap="true" truncateAt="0"/>
+                  <af:spacer width="4" height="10" id="pt_s4"/>
+                  <af:outputText value="#{securityContext.userName=='anonymous'? 'VKARNATI':'VKARNATI'}" id="pt_ot4"
+                                 styleClass="AFHeaderLevelTwo"/>
+                  <af:spacer width="5" height="65" id="pt_s2"/>
+                  <af:image id="pt_i1" source="/images/SMSHarsco_Logo.jpg"/>
+                  <af:spacer width="10" height="10" id="pt_s9"/>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:panelSplitter>
+          <af:spacer width="10" height="10" id="pt_s7"/>
+          <af:panelSplitter id="pt_ps2" splitterPosition="800" styleClass="AFStretchWidth">
+            <f:facet name="first">
+              <af:navigationPane id="pt_np1" level="0" value="#{root_menu}" var="menuInfo" hint="bar"
+                                 inlineStyle="font-size:medium;">
+                <f:facet name="nodeStamp">
+                  <af:commandNavigationItem text="#{menuInfo.label}" id="pt_cni1" destination="#{menuInfo.destination}"
+                                            action="#{menuInfo.doAction}" rendered="#{menuInfo.rendered}"
+                                            immediate="true" inlineStyle="font-size:medium;"/>
+                </f:facet>
+              </af:navigationPane>
+            </f:facet>
+          </af:panelSplitter>
+          <af:panelGroupLayout id="pt_pgl5" layout="horizontal" styleClass="AFStretchWidth">
+            <af:spacer width="10" height="10" id="pt_s6"/>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="center">
+        <!-- id="af_one_column_header_stretched"  -->
+        <af:facetRef facetName="body"/>
+      </f:facet>
+      <f:facet name="bottom">
+        <af:popup id="busyPopUp" contentDelivery="immediate">
+          <af:dialog id="busyDialog" type="none" closeIconVisible="false">
+            <af:panelGroupLayout id="busypgl5" layout="vertical" halign="center"
+                                 inlineStyle="width:253px;">
+              <af:panelGroupLayout id="busypgl6" layout="horizontal"
+                                   valign="middle" inlineStyle="width:352px;">
+                <af:image source="/images/ss.gif" id="busyi1"/>
+                <af:spacer width="10" height="10" id="busys1"/>
+                <af:outputText value="Please wait while the items are being assigned"
+                               id="busyot34" styleClass="OraPageStampLabel"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </af:dialog>
+        </af:popup>
+      </f:facet>
+    </af:panelStretchLayout>
+  </af:pageTemplateDef>
+</jsp:root>

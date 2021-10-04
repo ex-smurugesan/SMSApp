@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SiteLOVVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="om.apps.sms.model.views.lov.SiteLOVVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[Select HSUMT.Site_ID, HSUMT.OU, OOD.ORGANIZATION_NAME Site,OOD.ORGANIZATION_ID INV_ORG_ID,OOD.ORGANIZATION_CODE       
+from Apps.XXHCE_HE_SMS_USER_MTNC_TBL HSUMT, Apps.XXHCE_HE_SMS_SITE_MTNC_TBL HSSMT, apps.org_organization_definitions OOD      
+Where 1=1      
+And HSUMT.Site_ID = HSSMT.Site_ID      
+And OOD.ORGANIZATION_ID=HSSMT.ORGANIZATION_ID      
+--And HSUMT.User_Name=:b_userName 
+And HSUMT.User_Name='VKARNATI' 
+And HSUMT.Status='Active'      
+And HSSMT.Status='Active']]></SQLQuery>
+  <ViewAttribute
+    Name="SiteId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="SITE_ID"
+    Expression="SITE_ID"
+    SQLType="NUMERIC"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="Ou"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="OU"
+    Expression="OU"
+    SQLType="VARCHAR"
+    IsUpdateable="false"
+    Passivate="true"
+    IsQueriable="false">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <LABEL
+          ResId="om.apps.sms.model.views.lov.SiteLOVVO.Ou_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Site"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SITE"
+    Expression="SITE"
+    SQLType="VARCHAR"
+    Passivate="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <LABEL
+          ResId="om.apps.sms.model.views.lov.SiteLOVVO.Site_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InvOrgId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="INV_ORG_ID"
+    Expression="INV_ORG_ID"
+    SQLType="NUMERIC"
+    Passivate="true"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="OrganizationCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ORGANIZATION_CODE"
+    Expression="ORGANIZATION_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="om.apps.sms.model.views.lov.SiteLOVVO.OrganizationCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="SiteId"/>
+    <Item Value="Ou"/>
+    <Item Value="Site"/>
+    <Item Value="InvOrgId"/>
+    <Item Value="OrganizationCode"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

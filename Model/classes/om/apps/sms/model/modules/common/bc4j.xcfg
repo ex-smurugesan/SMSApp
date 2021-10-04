@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!---->
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="om.apps.sms.model.modules.SMSAM">
+      <AppModuleConfig name="SMSAMLocal" jbo.project="model.Model" ApplicationName="om.apps.sms.model.modules.SMSAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="jdbc/xxhcesms"/>
+         <Security AppModuleJndiName="om.apps.sms.model.modules.SMSAM"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="SMSAMShared" jbo.project="model.Model" ApplicationName="om.apps.sms.model.modules.SMSAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="jdbc/xxhcesms"/>
+         <Security AppModuleJndiName="om.apps.sms.model.modules.SMSAM"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

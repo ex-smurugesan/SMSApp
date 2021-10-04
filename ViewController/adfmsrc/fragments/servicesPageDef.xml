@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="servicesPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxhceHeSmsHeadersEOVO" RangeSize="25" DataControl="SMSAMDataControl"
+              id="XxhceHeSmsHeadersEOVOIterator"/>
+    <iterator Binds="XxhceHeSmsLinesEOVO1" RangeSize="25" DataControl="SMSAMDataControl"
+              id="XxhceHeSmsLinesEOVO1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="XxhceHeSmsHeadersEOVOIterator" StaticList="false" Uses="LOV_Type" id="Type" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="XxhceHeSmsHeadersEOVOIterator" id="PoNumber">
+      <AttrNames>
+        <Item Value="PoNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="SMSAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <methodAction id="createAndSave" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createAndSave"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.createAndSave.dataControl.dataProvider"/>
+    <tree IterBinding="XxhceHeSmsLinesEOVO1Iterator" id="XxhceHeSmsLinesEOVO1">
+      <nodeDefinition DefName="om.apps.sms.model.views.XxhceHeSmsLinesEOVO" Name="XxhceHeSmsLinesEOVO10">
+        <AttrNames>
+          <Item Value="SmsNumber"/>
+          <Item Value="Revision"/>
+          <Item Value="ItemId"/>
+          <Item Value="Uom"/>
+          <Item Value="Activity"/>
+          <Item Value="Quantity"/>
+          <Item Value="ListPrice"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="SubTotal"/>
+          <Item Value="PriceChangeReason"/>
+          <Item Value="AssetNumber"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="CurrencyCode"/>
+          <Item Value="EmployeeNumber"/>
+          <Item Value="ErrorMessage"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="Origin"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="TaxRate"/>
+          <Item Value="TicketLineStatus"/>
+          <Item Value="ItemDescription"/>
+          <Item Value="ItemIdTr"/>
+          <Item Value="SmsRequestDate"/>
+          <Item Value="ActivityTr"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="addDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addDetails"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.addDetails.dataControl.dataProvider"/>
+    <methodAction id="deleteDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="deleteDetails"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.deleteDetails.dataControl.dataProvider"/>
+    <listOfValues IterBinding="XxhceHeSmsHeadersEOVOIterator" StaticList="false" Uses="LOV_SiteDescription" NullValueFlag="start"
+                  id="SiteDescription"/>
+    <listOfValues IterBinding="XxhceHeSmsHeadersEOVOIterator" StaticList="false" Uses="LOV_CustomerShipToDesc" NullValueFlag="start"
+                  id="CustomerShipToDesc"/>
+    <listOfValues IterBinding="XxhceHeSmsHeadersEOVOIterator" StaticList="false" Uses="LOV_CustomerBillToDesc" NullValueFlag="start"
+                  id="CustomerBillToDesc"/>
+    <listOfValues IterBinding="XxhceHeSmsHeadersEOVOIterator" StaticList="false" Uses="LOV_PriceList" NullValueFlag="start" id="PriceList"/>
+    <methodAction id="clearHdrDtl" RequiresUpdateModel="true" Action="invokeMethod" MethodName="clearHdrDtl"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.clearHdrDtl.dataControl.dataProvider"/>
+    <methodAction id="saveValidData" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveValidData"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.saveValidData.dataControl.dataProvider"/>
+    <methodAction id="getSequenceNumber" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getSequenceNumber"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.getSequenceNumber.dataControl.dataProvider"
+                  ReturnName="data.SMSAMDataControl.methodResults.getSequenceNumber_getSequenceNumber_dataControl_dataProvider_getSequenceNumber_result">
+      <NamedData NDName="seq" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="setDefaultBillTo" RequiresUpdateModel="true" Action="invokeMethod" MethodName="setDefaultBillTo"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="bindings.setDefaultBillTo.dataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

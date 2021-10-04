@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XxhceHeSmsSiteMtncEOVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  RowClass="om.apps.sms.model.views.XxhceHeSmsSiteMtncEOVORowImpl">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="om.apps.sms.model.views.XxhceHeSmsSiteMtncEOVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="SiteSetupLOVVO"
+    ViewObjectName="om.apps.sms.model.views.lov.SiteSetupLOVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SiteStatusLOVVO"
+    ViewObjectName="om.apps.sms.model.views.lov.SiteStatusLOVVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_OrganizationCode"
+    ListVOName="SiteSetupLOVVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrganizationCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="OrganizationId"/>
+      <Item Value="SiteDesc"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SiteCode"/>
+      <Item Value="OrganizationId"/>
+      <Item Value="SiteDesc"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SiteCode"/>
+      <Item Value="SiteDesc"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="SiteStatusLOVVO"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT XxhceHeSmsSiteMtncEO.CREATED_BY,   
+       XxhceHeSmsSiteMtncEO.CREATION_DATE,   
+       XxhceHeSmsSiteMtncEO.ID,   
+       XxhceHeSmsSiteMtncEO.LAST_UPDATED_BY,   
+       XxhceHeSmsSiteMtncEO.LAST_UPDATED_DATE,   
+       XxhceHeSmsSiteMtncEO.ORGANIZATION_CODE,   
+       XxhceHeSmsSiteMtncEO.ORGANIZATION_ID,   
+       XxhceHeSmsSiteMtncEO.SITE_ID,   
+       XxhceHeSmsSiteMtncEO.STATUS,   
+       XxhceHeSmsSiteMtncEO.SERIAL_VERSION_ID,  
+       (select ORGANIZATION_NAME from org_organization_definitions ood 
+where ood.inventory_enabled_flag='Y' 
+AND ood.organization_id=XxhceHeSmsSiteMtncEO.organization_id 
+AND ood.organization_code=XxhceHeSmsSiteMtncEO.organization_code 
+and nvl(ood.disable_date,sysdate)>=sysdate) SITE_DESC 
+FROM  XXHCE_HE_SMS_SITE_MTNC_TBL XxhceHeSmsSiteMtncEO]]></SQLQuery>
+  <EntityUsage
+    Name="XxhceHeSmsSiteMtncEO"
+    Entity="om.apps.sms.model.entities.XxhceHeSmsSiteMtncEO"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="LAST_UPDATED_DATE"/>
+  <ViewAttribute
+    Name="OrganizationCode"
+    PrecisionRule="true"
+    EntityAttrName="OrganizationCode"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="ORGANIZATION_CODE"
+    LOVName="LOV_OrganizationCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrganizationId"
+    PrecisionRule="true"
+    EntityAttrName="OrganizationId"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="ORGANIZATION_ID"/>
+  <ViewAttribute
+    Name="SiteId"
+    PrecisionRule="true"
+    EntityAttrName="SiteId"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="SITE_ID"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="STATUS"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SerialVersionId"
+    PrecisionRule="true"
+    EntityAttrName="SerialVersionId"
+    EntityUsage="XxhceHeSmsSiteMtncEO"
+    AliasName="SERIAL_VERSION_ID"/>
+  <ViewAttribute
+    Name="SiteDesc"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SITE_DESC"
+    Expression="SITE_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="150"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="XxhceHeSmsSiteTypeEOVO"
+    ViewLink="om.apps.sms.model.views.viewlinks.XxhceHeSmsSiteMtncVOToXxhceHeSmsSiteTypeVOVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

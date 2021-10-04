@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<skins xmlns="http://myfaces.apache.org/trinidad/skin">
+  <skin>
+    <id>SalesManagementSystem.desktop</id>
+    <family>SalesManagementSystem</family>
+    <extends>skyros-v1.desktop</extends>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>skins/SalesManagementSystem/SalesManagementSystem.css</style-sheet-name>
+    <bundle-name>view.skinBundle</bundle-name>
+  </skin>
+</skins>

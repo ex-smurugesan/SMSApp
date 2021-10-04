@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XxhceHeSmsSiteMtncVOToXxhceHeSmsSiteTypeVOVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  EntityAssociation="om.apps.sms.model.entities.associations.XxhceHeSmsSiteMtncEOToXxhceHeSmsSiteTypeEOAssoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="om.apps.sms.model.views.viewlinks.XxhceHeSmsSiteMtncVOToXxhceHeSmsSiteTypeVOVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="XxhceHeSmsSiteMtncEOVO"
+    Cardinality="1"
+    Source="true"
+    Owner="om.apps.sms.model.views.XxhceHeSmsSiteMtncEOVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="XxhceHeSmsSiteMtncEOVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="om.apps.sms.model.views.XxhceHeSmsSiteMtncEOVO.SiteId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="XxhceHeSmsSiteTypeEOVO"
+    Cardinality="-1"
+    Owner="om.apps.sms.model.views.XxhceHeSmsSiteTypeEOVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="XxhceHeSmsSiteTypeEOVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="om.apps.sms.model.views.XxhceHeSmsSiteTypeEOVO.SiteId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

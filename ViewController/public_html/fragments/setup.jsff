@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle" value="#{adfBundle['om.apps.sms.bundle.viewcontrollerBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelAccordion discloseMany="false" id="pa1" styleClass="AFStretchWidth">
+      <af:showDetailItem id="pane1" text="Site Setup">
+        <af:panelGroupLayout id="pgl2">
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.XxhceHeSmsSiteMtncEOVO.collectionModel}" var="row" contentDelivery="immediate"
+                      rows="#{bindings.XxhceHeSmsSiteMtncEOVO.rangeSize}"
+                      emptyText="#{bindings.XxhceHeSmsSiteMtncEOVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.XxhceHeSmsSiteMtncEOVO.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.XxhceHeSmsSiteMtncEOVO.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.XxhceHeSmsSiteMtncEOVO.rangeSize}" id="t2"
+                      columnStretching="column:c9" width="800px;" binding="#{pageFlowScope.SetupBean.setupTBLProp}">
+              <af:column headerText="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.SiteId.label}" id="c1" rendered="false">
+                <af:inputText value="#{row.bindings.SiteId.inputValue}"
+                              label="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.SiteId.label}"
+                              required="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.SiteId.mandatory}"
+                              columns="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.SiteId.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.SiteId.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.SiteId.tooltip}" id="it1">
+                  <f:validator binding="#{row.bindings.SiteId.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.SITE}" id="c2" width="140" displayIndex="-1">
+                <af:inputListOfValues id="organizationCodeId" autoSubmit="true"
+                                      popupTitle="Search and Select: #{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationCode.label}"
+                                      value="#{row.bindings.OrganizationCode.inputValue}"
+                                      model="#{row.bindings.OrganizationCode.listOfValuesModel}"
+                                      required="true"
+                                      columns="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationCode.displayWidth}"
+                                      shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationCode.tooltip}"
+                                      valueChangeListener="#{pageFlowScope.SetupBean.duplicateSiteCheckAL}">
+                  <f:validator binding="#{row.bindings.OrganizationCode.validator}"/>
+                </af:inputListOfValues>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.SITE_DESCRIPTION}" id="c9" width="100" displayIndex="-1">
+                <af:outputText value="#{row.SiteDesc}"
+                               shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.SiteDesc.tooltip}" id="ot1"
+                               partialTriggers="organizationCodeId"/>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.STATUS}" id="c4" width="120">
+                <af:selectOneChoice value="#{row.bindings.Status.inputValue}" label="#{row.bindings.Status.label}"
+                                    required="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.Status.mandatory}" autoSubmit="true"
+                                    shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.Status.tooltip}" id="soc1">
+                  <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                  <f:validator binding="#{row.bindings.Status.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationId.label}" id="c3"
+                         rendered="false">
+                <af:inputText value="#{row.bindings.OrganizationId.inputValue}"
+                              label="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationId.label}"
+                              required="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationId.mandatory}"
+                              columns="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationId.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationId.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationId.tooltip}" id="it3">
+                  <f:validator binding="#{row.bindings.OrganizationId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.OrganizationId.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreatedBy.label}" id="c5" rendered="false">
+                <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                              label="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreatedBy.label}"
+                              required="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreatedBy.mandatory}"
+                              columns="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreatedBy.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreatedBy.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreatedBy.tooltip}" id="it5">
+                  <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreatedBy.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreationDate.label}" id="c6"
+                         rendered="false">
+                <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                              label="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreationDate.label}"
+                              required="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreationDate.mandatory}"
+                              columns="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreationDate.displayWidth}"
+                              shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreationDate.tooltip}" id="id1">
+                  <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.CreationDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedBy.label}" id="c7"
+                         rendered="false">
+                <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                              label="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedBy.label}"
+                              required="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedBy.mandatory}"
+                              columns="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedBy.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedBy.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedBy.tooltip}" id="it6">
+                  <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedBy.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedDate.label}" id="c8"
+                         rendered="false">
+                <af:inputDate value="#{row.bindings.LastUpdatedDate.inputValue}"
+                              label="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedDate.label}"
+                              required="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedDate.mandatory}"
+                              columns="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedDate.displayWidth}"
+                              shortDesc="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedDate.tooltip}" id="id2">
+                  <f:validator binding="#{row.bindings.LastUpdatedDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.XxhceHeSmsSiteMtncEOVO.hints.LastUpdatedDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column id="c10">
+                <af:link text="#{viewcontrollerBundle.TYPES}" id="l1"
+                         actionListener="#{pageFlowScope.SetupBean.typesAL}"/>
+              </af:column>
+              <af:column id="c12">
+                <af:link text="#{viewcontrollerBundle.ACTIVITY}" id="l2"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelGroupLayout>
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:button text="#{viewcontrollerBundle.ADD}" id="b1"
+                       actionListener="#{pageFlowScope.SetupBean.addSetupAL}"/>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:button text="#{viewcontrollerBundle.SAVE}" id="b2" actionListener="#{pageFlowScope.SetupBean.saveAL}"/>
+            <af:spacer width="1150" height="10" id="s2"/>
+          </af:toolbar>
+        </f:facet>
+      </af:showDetailItem>
+    </af:panelAccordion>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p1" binding="#{pageFlowScope.SetupBean.typePopupProp}">
+      <af:dialog id="d1" type="okCancel">
+        <f:facet name="buttonBar"/>
+        <af:panelGroupLayout id="pgl3" layout="vertical">
+          <af:panelGroupLayout id="pgl4" layout="horizontal">
+            <af:button text="#{viewcontrollerBundle.ADD}" id="b3"
+                       actionListener="#{pageFlowScope.SetupBean.addTypeAL}"/>
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:button text="Delete" id="b4" actionListener="#{pageFlowScope.SetupBean.deleteTypeAL}"/>
+            <af:spacer width="10" height="10" id="s4"/>
+            <af:button text="#{viewcontrollerBundle.SAVE}" id="b5" actionListener="#{pageFlowScope.SetupBean.saveAL}"/>
+          </af:panelGroupLayout>
+          <af:panelGroupLayout id="pgl5">
+            <af:panelCollection id="pc2">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.XxhceHeSmsSiteTypeEOVO.collectionModel}" var="row"
+                        rows="#{bindings.XxhceHeSmsSiteTypeEOVO.rangeSize}"
+                        emptyText="#{bindings.XxhceHeSmsSiteTypeEOVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0" contentDelivery="immediate"
+                        selectedRowKeys="#{bindings.XxhceHeSmsSiteTypeEOVO.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.XxhceHeSmsSiteTypeEOVO.collectionModel.makeCurrent}"
+                        rowSelection="single" fetchSize="#{bindings.XxhceHeSmsSiteTypeEOVO.rangeSize}" id="t3">
+                <af:column headerText="#{viewcontrollerBundle.TYPE}" id="c11">
+                  <af:inputText value="#{row.bindings.TypeName.inputValue}" autoSubmit="true"
+                                label="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.TypeName.label}"
+                                required="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.TypeName.mandatory}"
+                                columns="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.TypeName.displayWidth}"
+                                maximumLength="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.TypeName.precision}"
+                                shortDesc="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.TypeName.tooltip}" id="it2">
+                    <f:validator binding="#{row.bindings.TypeName.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{viewcontrollerBundle.STATUS}" id="c20">
+                  <af:selectOneChoice value="#{row.bindings.Status.inputValue}" label="#{row.bindings.Status.label}"
+                               autoSubmit="true"    required="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.Status.mandatory}"
+                                      shortDesc="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.Status.tooltip}" id="soc2">
+                    <f:selectItems value="#{row.bindings.Status.items}" id="si2"/>
+                    <f:validator binding="#{row.bindings.Status.validator}"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreatedBy.label}" id="c15" rendered="false">
+                  <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                                label="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreatedBy.label}"
+                                required="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreatedBy.mandatory}"
+                                columns="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreatedBy.displayWidth}"
+                                maximumLength="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreatedBy.precision}"
+                                shortDesc="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreatedBy.tooltip}" id="it9">
+                    <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreationDate.label}" id="c16" rendered="false">
+                  <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                                label="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreationDate.label}"
+                                required="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreationDate.mandatory}"
+                                columns="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreationDate.displayWidth}"
+                                shortDesc="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreationDate.tooltip}" id="id3">
+                    <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.CreationDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column headerText="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedBy.label}" id="c17" rendered="false">
+                  <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                                label="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedBy.label}"
+                                required="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedBy.mandatory}"
+                                columns="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedBy.displayWidth}"
+                                maximumLength="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedBy.precision}"
+                                shortDesc="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedBy.tooltip}" id="it10">
+                    <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedDate.label}" id="c18" rendered="false">
+                  <af:inputDate value="#{row.bindings.LastUpdatedDate.inputValue}"
+                                label="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedDate.label}"
+                                required="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedDate.mandatory}"
+                                columns="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedDate.displayWidth}"
+                                shortDesc="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedDate.tooltip}" id="id4">
+                    <f:validator binding="#{row.bindings.LastUpdatedDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column headerText="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedLogin.label}" id="c19" rendered="false">
+                  <af:inputText value="#{row.bindings.LastUpdatedLogin.inputValue}"
+                                label="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedLogin.label}"
+                                required="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedLogin.mandatory}"
+                                columns="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedLogin.displayWidth}"
+                                maximumLength="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedLogin.precision}"
+                                shortDesc="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedLogin.tooltip}" id="it11">
+                    <f:validator binding="#{row.bindings.LastUpdatedLogin.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.XxhceHeSmsSiteTypeEOVO.hints.LastUpdatedLogin.format}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

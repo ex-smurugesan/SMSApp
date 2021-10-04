@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="servicetaskflow">
+    <default-activity>init</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__3">
+      <managed-bean-name>ServiceBean</managed-bean-name>
+      <managed-bean-class>om.apps.sms.beans.ServiceBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="services">
+      <page>/fragments/services.jsff</page>
+    </view>
+    <method-call id="init">
+      <method>#{pageFlowScope.ServiceBean.init}</method>
+      <outcome>
+        <fixed-outcome>init</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>init</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>init</from-outcome>
+        <to-activity-id>services</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

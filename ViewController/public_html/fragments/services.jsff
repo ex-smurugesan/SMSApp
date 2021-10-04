@@ -1,0 +1,519 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle" value="#{adfBundle['om.apps.sms.bundle.viewcontrollerBundle']}"/>
+  <af:panelGroupLayout id="pgl3" layout="vertical">
+    <af:panelAccordion discloseMany="false" id="pa1" styleClass="AFStretchWidth" partialTriggers="b3">
+      <af:showDetailItem id="pane1" text="Service Headers">
+        <af:panelGroupLayout id="pgl1" layout="horizontal">
+          <af:spacer width="10" height="10" id="s7"/>
+          <af:panelFormLayout id="pfl1" rows="2">
+            <af:panelGridLayout id="pgl5" inlineStyle="width:800px;">
+              <af:gridRow marginTop="5px" height="auto" id="gr1">
+                <af:gridCell marginStart="5px" id="gc1" halign="end" valign="middle" width="auto">
+                  <af:outputLabel value="#{viewcontrollerBundle.SITE}" id="ol1"/>
+                </af:gridCell>
+                <af:gridCell width="auto" id="gc2" marginEnd="3px">
+                  <!--<af:inputListOfValues id="siteIdId" popupTitle="Search and Select: #{bindings.SiteId.hints.label}"
+                                        value="#{bindings.SiteId.inputValue}" autoSubmit="true"
+                                        model="#{bindings.SiteId.listOfValuesModel}"
+                                        required="#{bindings.SiteId.hints.mandatory}"
+                                        columns="#{bindings.SiteId.hints.displayWidth}"
+                                        shortDesc="#{bindings.SiteId.hints.tooltip}" contentStyle="min-width:120px;">
+                    <f:validator binding="#{bindings.SiteId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.SiteId.format}"/>
+                  </af:inputListOfValues>-->
+                  <af:inputListOfValues id="siteDescriptionId" autoSubmit="true"
+                                        popupTitle="Search and Select: #{bindings.SiteDescription.hints.label}"
+                                        value="#{bindings.SiteDescription.inputValue}" contentStyle="min-width:120px;"
+                                        model="#{bindings.SiteDescription.listOfValuesModel}"
+                                        required="#{bindings.SiteDescription.hints.mandatory}"
+                                        columns="#{bindings.SiteDescription.hints.displayWidth}"
+                                        shortDesc="#{bindings.SiteDescription.hints.tooltip}">
+                    <f:validator binding="#{bindings.SiteDescription.validator}"/>
+                    <af:autoSuggestBehavior suggestedItems="#{bindings.SiteDescription.suggestedItems}"/>
+                  </af:inputListOfValues>
+                </af:gridCell>
+                <af:gridCell marginStart="15px" id="gc3" halign="end" valign="middle" width="auto">
+                  <af:outputLabel value="#{viewcontrollerBundle.CUSTOMER_SHIP_TO}" id="ol2"/>
+                </af:gridCell>
+                <af:gridCell width="auto" id="gc4" marginEnd="3px">
+                  <!--<af:inputListOfValues id="customerShipToSiteUseIdId" autoSubmit="true"
+                                        popupTitle="Search and Select: #{bindings.CustomerShipToSiteUseId.hints.label}"
+                                        value="#{bindings.CustomerShipToSiteUseId.inputValue}"
+                                        model="#{bindings.CustomerShipToSiteUseId.listOfValuesModel}"
+                                        required="#{bindings.CustomerShipToSiteUseId.hints.mandatory}"
+                                        columns="#{bindings.CustomerShipToSiteUseId.hints.displayWidth}"
+                                        shortDesc="#{bindings.CustomerShipToSiteUseId.hints.tooltip}"
+                                        contentStyle="min-width:120px;" partialTriggers="siteDescriptionId">
+                    <f:validator binding="#{bindings.CustomerShipToSiteUseId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.CustomerShipToSiteUseId.format}"/>
+                  </af:inputListOfValues>-->
+                  <af:inputListOfValues id="customerShipToDescId"
+                                        popupTitle="Search and Select: #{bindings.CustomerShipToDesc.hints.label}"
+                                        value="#{bindings.CustomerShipToDesc.inputValue}"
+                                        model="#{bindings.CustomerShipToDesc.listOfValuesModel}"
+                                        required="#{bindings.CustomerShipToDesc.hints.mandatory}"
+                                        autoSubmit="true" contentStyle="min-width:120px;"
+                                        columns="#{bindings.CustomerShipToDesc.hints.displayWidth}"
+                                        shortDesc="#{bindings.CustomerShipToDesc.hints.tooltip}">
+                    <f:validator binding="#{bindings.CustomerShipToDesc.validator}"/>
+                     <af:autoSuggestBehavior suggestedItems="#{bindings.CustomerShipToDesc.suggestedItems}"/>
+                  </af:inputListOfValues>
+                </af:gridCell>
+                <af:gridCell marginStart="15px" id="gc5" halign="end" valign="middle" width="auto">
+                  <af:outputLabel value="#{viewcontrollerBundle.CUSTOMER_BILL_TO}" id="ol3"/>
+                </af:gridCell>
+                <af:gridCell width="auto" marginEnd="5px" id="gc6">
+                  <!--<af:inputListOfValues id="customerBillToSiteUseIdId" autoSubmit="true"
+                                        popupTitle="Search and Select: #{bindings.CustomerBillToSiteUseId.hints.label}"
+                                        value="#{bindings.CustomerBillToSiteUseId.inputValue}"
+                                        model="#{bindings.CustomerBillToSiteUseId.listOfValuesModel}"
+                                        required="#{bindings.CustomerBillToSiteUseId.hints.mandatory}"
+                                        columns="#{bindings.CustomerBillToSiteUseId.hints.displayWidth}"
+                                        shortDesc="#{bindings.CustomerBillToSiteUseId.hints.tooltip}"
+                                        contentStyle="min-width:120px;"
+                                        partialTriggers="siteDescriptionId customerShipToSiteUseIdId">
+                    <f:validator binding="#{bindings.CustomerBillToSiteUseId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.CustomerBillToSiteUseId.format}"/>
+                  </af:inputListOfValues>-->
+                  <af:inputListOfValues id="customerBillToDescId"
+                                        popupTitle="Search and Select: #{bindings.CustomerBillToDesc.hints.label}"
+                                        value="#{bindings.CustomerBillToDesc.inputValue}"
+                                        model="#{bindings.CustomerBillToDesc.listOfValuesModel}"
+                                        required="#{bindings.CustomerBillToDesc.hints.mandatory}"
+                                        autoSubmit="true" contentStyle="min-width:120px;"
+                                        partialTriggers="siteDescriptionId customerShipToDescId"
+                                        columns="#{bindings.CustomerBillToDesc.hints.displayWidth}"
+                                        shortDesc="#{bindings.CustomerBillToDesc.hints.tooltip}">
+                    <f:validator binding="#{bindings.CustomerBillToDesc.validator}"/>
+                     <af:autoSuggestBehavior suggestedItems="#{bindings.CustomerBillToDesc.suggestedItems}"/>
+                  </af:inputListOfValues>
+                </af:gridCell>
+              </af:gridRow>
+              <af:gridRow marginTop="10px" height="auto" marginBottom="10px" id="gr2">
+                <af:gridCell marginStart="5px" id="gc7" halign="end" valign="middle">
+                  <af:outputLabel value="#{viewcontrollerBundle.TYPE}" id="ol4"/>
+                </af:gridCell>
+                <af:gridCell width="auto" id="gc8" marginEnd="3px">
+                  <af:selectOneChoice value="#{bindings.Type.inputValue}"
+                                      required="#{bindings.Type.hints.mandatory}" autoSubmit="true"
+                                      shortDesc="#{bindings.Type.hints.tooltip}" id="soc1"
+                                      contentStyle="min-width:175px;">
+                    <f:selectItems value="#{bindings.Type.items}" id="si1"/>
+                    <f:validator binding="#{bindings.Type.validator}"/>
+                  </af:selectOneChoice>
+                </af:gridCell>
+                <af:gridCell marginStart="10px" width="auto" id="gc9" halign="end" valign="middle">
+                  <af:outputLabel value="#{viewcontrollerBundle.CUSTOMER_PO_NO}" id="ol5"/>
+                </af:gridCell>
+                <af:gridCell width="auto" id="gc10">
+                  <af:inputText value="#{bindings.PoNumber.inputValue}" required="#{bindings.PoNumber.hints.mandatory}"
+                                autoSubmit="true" columns="#{bindings.PoNumber.hints.displayWidth}"
+                                maximumLength="#{bindings.PoNumber.hints.precision}"
+                                shortDesc="#{bindings.PoNumber.hints.tooltip}" id="it1">
+                    <f:validator binding="#{bindings.PoNumber.validator}"/>
+                  </af:inputText>
+                </af:gridCell>
+                <af:gridCell marginStart="2px" width="auto" id="gc11" halign="end" valign="middle">
+                  <af:outputLabel value="#{viewcontrollerBundle.PRICE_LIST}" id="ol6"/>
+                </af:gridCell>
+                <af:gridCell width="auto" marginEnd="5px" id="gc12">
+                  <!--<af:inputListOfValues id="listHeaderIdId"
+                                        popupTitle="Search and Select: #{bindings.ListHeaderId.hints.label}"
+                                        value="#{bindings.ListHeaderId.inputValue}" autoSubmit="true"
+                                        model="#{bindings.ListHeaderId.listOfValuesModel}"
+                                        required="#{bindings.ListHeaderId.hints.mandatory}"
+                                        columns="#{bindings.ListHeaderId.hints.displayWidth}"
+                                        shortDesc="#{bindings.ListHeaderId.hints.tooltip}"
+                                        contentStyle="min-width:120px;" partialTriggers="siteDescriptionId">
+                    <f:validator binding="#{bindings.ListHeaderId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ListHeaderId.format}"/>
+                  </af:inputListOfValues>-->
+                  <af:inputListOfValues id="priceListId"
+                                        popupTitle="Search and Select: #{bindings.PriceList.hints.label}"
+                                        value="#{bindings.PriceList.inputValue}"
+                                        model="#{bindings.PriceList.listOfValuesModel}"
+                                        required="#{bindings.PriceList.hints.mandatory}"
+                                        autoSubmit="true" contentStyle="min-width:120px;" partialTriggers="siteDescriptionId"
+                                        columns="#{bindings.PriceList.hints.displayWidth}"
+                                        shortDesc="#{bindings.PriceList.hints.tooltip}">
+                    <f:validator binding="#{bindings.PriceList.validator}"/>
+                      <af:autoSuggestBehavior suggestedItems="#{bindings.PriceList.suggestedItems}"/>
+                  </af:inputListOfValues>
+                </af:gridCell>
+              </af:gridRow>
+            </af:panelGridLayout>
+          </af:panelFormLayout>
+        </af:panelGroupLayout>
+        <f:facet name="toolbar">
+          <af:toolbar id="t4">
+            <af:button text="#{viewcontrollerBundle.SAVE_AND_CREATE_NEW}" id="b2" disabled="#{!(bindings.SiteDescription.attributeValue != null and 
+            bindings.CustomerShipToDesc.attributeValue != null and bindings.CustomerBillToDesc.attributeValue != null and bindings.Type.attributeValue != null
+            and bindings.PriceList.attributeValue != null)}"
+                       actionListener="#{pageFlowScope.ServiceBean.createSaveAL}"
+                       partialTriggers="siteDescriptionId customerShipToDescId customerBillToDescId soc1 priceListId"/>
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:button text="#{viewcontrollerBundle.Clear}" id="b3"
+                       actionListener="#{pageFlowScope.ServiceBean.clearAL}"/>
+            <af:spacer width="1060" height="10" id="s6"/>
+          </af:toolbar>
+        </f:facet>
+      </af:showDetailItem>
+    </af:panelAccordion>
+    <af:panelAccordion discloseMany="false" id="pa2" styleClass="AFStretchWidth" partialTriggers="b3">
+      <af:showDetailItem id="pane2" text="Service Details">
+        <af:panelGroupLayout id="pgl2">
+          <af:spacer width="10" height="10" id="s8"/>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.XxhceHeSmsLinesEOVO1.collectionModel}" var="row"
+                      rows="#{bindings.XxhceHeSmsLinesEOVO1.rangeSize}" contentDelivery="immediate"
+                      emptyText="#{bindings.XxhceHeSmsLinesEOVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" 
+                      selectedRowKeys="#{bindings.XxhceHeSmsLinesEOVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.XxhceHeSmsLinesEOVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.XxhceHeSmsLinesEOVO1.rangeSize}" id="t1"
+                      partialTriggers=":::b4 :::b6 ::b2" columnStretching="column:c26"
+                      binding="#{pageFlowScope.ServiceBean.linesTBLProp}">
+              <af:column id="c25" width="50">
+                <af:button id="b5" icon="/images/deleteicon_enabled.gif"
+                           actionListener="#{pageFlowScope.ServiceBean.deleteDetailAL}"/>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.SERVICE__}" id="c1" width="60" displayIndex="-1">
+                <af:inputText value="#{row.bindings.SmsNumber.inputValue}" disabled="true"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsNumber.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsNumber.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsNumber.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsNumber.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsNumber.tooltip}" id="it2">
+                  <f:validator binding="#{row.bindings.SmsNumber.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.SERVICE_REVISION__}" id="c2">
+                <af:inputText value="#{row.bindings.Revision.inputValue}" disabled="true"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.Revision.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.Revision.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.Revision.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.Revision.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.Revision.tooltip}" id="it3">
+                  <f:validator binding="#{row.bindings.Revision.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.Revision.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.SERVICE_DATE}" id="c3" width="120" displayIndex="-1">
+                <af:inputDate value="#{row.bindings.SmsRequestDate.inputValue}" autoSubmit="true"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsRequestDate.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsRequestDate.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsRequestDate.displayWidth}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsRequestDate.tooltip}" id="id1">
+                  <f:validator binding="#{row.bindings.SmsRequestDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.SmsRequestDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.SALES_ITEM}" id="c4" width="140">
+                <af:inputListOfValues id="itemIdTrId" autoSubmit="true"
+                                      popupTitle="Search and Select: #{bindings.XxhceHeSmsLinesEOVO1.hints.ItemIdTr.label}"
+                                      value="#{row.bindings.ItemIdTr.inputValue}"
+                                      model="#{row.bindings.ItemIdTr.listOfValuesModel}"
+                                      required="#{bindings.XxhceHeSmsLinesEOVO1.hints.ItemIdTr.mandatory}"
+                                      columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.ItemIdTr.displayWidth}"
+                                      shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.ItemIdTr.tooltip}">
+                  <f:validator binding="#{row.bindings.ItemIdTr.validator}"/>
+                  <af:autoSuggestBehavior suggestedItems="#{row.bindings.ItemIdTr.suggestedItems}"/>
+                </af:inputListOfValues>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.DESCRIPTION}" id="c26" width="120" displayIndex="-1"
+                         minimumWidth="12">
+                <af:inputText value="#{row.bindings.ItemDescription.inputValue}" disabled="true"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.ItemDescription.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.ItemDescription.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.ItemDescription.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.ItemDescription.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.ItemDescription.tooltip}" id="it4"
+                              partialTriggers="itemIdTrId">
+                  <f:validator binding="#{row.bindings.ItemDescription.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.UOM}" id="c5" width="60">
+                <af:inputText value="#{row.bindings.Uom.inputValue}" disabled="true"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.Uom.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.Uom.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.Uom.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.Uom.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.Uom.tooltip}" id="it5"
+                              partialTriggers="itemIdTrId">
+                  <f:validator binding="#{row.bindings.Uom.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.ACTIVITY}" id="c6" width="120">
+                <af:inputListOfValues id="activityTrId" autoSubmit="true"
+                                      popupTitle="Search and Select: #{bindings.XxhceHeSmsLinesEOVO1.hints.ActivityTr.label}"
+                                      value="#{row.bindings.ActivityTr.inputValue}"
+                                      model="#{row.bindings.ActivityTr.listOfValuesModel}"
+                                      required="#{bindings.XxhceHeSmsLinesEOVO1.hints.ActivityTr.mandatory}"
+                                      columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.ActivityTr.displayWidth}"
+                                      shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.ActivityTr.tooltip}"
+                                      partialTriggers="itemIdTrId">
+                  <f:validator binding="#{row.bindings.ActivityTr.validator}"/>
+                  <af:autoSuggestBehavior suggestedItems="#{row.bindings.ActivityTr.suggestedItems}"/>
+                </af:inputListOfValues>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.QUANTITY}" id="c7">
+                <af:inputText value="#{row.bindings.Quantity.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.Quantity.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.Quantity.mandatory}"
+                              autoSubmit="true"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.Quantity.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.Quantity.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.Quantity.tooltip}" id="it7">
+                  <f:validator binding="#{row.bindings.Quantity.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.Quantity.format}"
+                                    maxFractionDigits="2" minFractionDigits="2"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.LIST_PRICE}" id="c8">
+                <af:inputText value="#{row.bindings.ListPrice.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.ListPrice.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.ListPrice.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.ListPrice.displayWidth}"
+                              autoSubmit="true" disabled="true"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.ListPrice.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.ListPrice.tooltip}" id="it8"
+                              partialTriggers="itemIdTrId">
+                  <f:validator binding="#{row.bindings.ListPrice.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.ListPrice.format}"
+                                    maxFractionDigits="2" minFractionDigits="2"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.UNIT_PRICE}" id="c9">
+                <af:inputText value="#{row.bindings.UnitPrice.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.UnitPrice.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.UnitPrice.mandatory}"
+                              autoSubmit="true"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.UnitPrice.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.UnitPrice.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.UnitPrice.tooltip}" id="it9"
+                              partialTriggers="itemIdTrId">
+                  <f:validator binding="#{row.bindings.UnitPrice.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.UnitPrice.format}"
+                                    maxFractionDigits="2" minFractionDigits="2"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.AMOUNT}" id="c10">
+                <af:inputText value="#{row.bindings.SubTotal.inputValue}" disabled="true"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.SubTotal.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.SubTotal.mandatory}"
+                              autoSubmit="true"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.SubTotal.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.SubTotal.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.SubTotal.tooltip}" id="it10"
+                              partialTriggers="it7 it9">
+                  <f:validator binding="#{row.bindings.SubTotal.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.SubTotal.format}"
+                                    maxFractionDigits="2" minFractionDigits="2"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.PRICE_CHANGE_REASON}" id="c11">
+                <af:inputText value="#{row.bindings.PriceChangeReason.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.PriceChangeReason.label}"
+                              required="#{row.UnitPrice != row.ListPrice ? true:false}"
+                              autoSubmit="true"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.PriceChangeReason.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.PriceChangeReason.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.PriceChangeReason.tooltip}" id="it11">
+                  <f:validator binding="#{row.bindings.PriceChangeReason.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.AssetNumber.label}" id="c12" rendered="false">
+                <af:inputText value="#{row.bindings.AssetNumber.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.AssetNumber.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.AssetNumber.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.AssetNumber.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.AssetNumber.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.AssetNumber.tooltip}" id="it12">
+                  <f:validator binding="#{row.bindings.AssetNumber.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreatedBy.label}" id="c13" rendered="false">
+                <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreatedBy.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreatedBy.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreatedBy.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreatedBy.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreatedBy.tooltip}" id="it13">
+                  <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreatedBy.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreationDate.label}" id="c14" rendered="false">
+                <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreationDate.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreationDate.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreationDate.displayWidth}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreationDate.tooltip}" id="id2">
+                  <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.CreationDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.CurrencyCode.label}" id="c15" rendered="false">
+                <af:inputText value="#{row.bindings.CurrencyCode.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.CurrencyCode.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.CurrencyCode.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.CurrencyCode.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.CurrencyCode.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.CurrencyCode.tooltip}" id="it14">
+                  <f:validator binding="#{row.bindings.CurrencyCode.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.EmployeeNumber.label}" id="c16" rendered="false">
+                <af:inputText value="#{row.bindings.EmployeeNumber.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.EmployeeNumber.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.EmployeeNumber.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.EmployeeNumber.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.EmployeeNumber.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.EmployeeNumber.tooltip}" id="it15">
+                  <f:validator binding="#{row.bindings.EmployeeNumber.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.ErrorMessage.label}" id="c17" rendered="false">
+                <af:inputText value="#{row.bindings.ErrorMessage.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.ErrorMessage.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.ErrorMessage.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.ErrorMessage.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.ErrorMessage.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.ErrorMessage.tooltip}" id="it16">
+                  <f:validator binding="#{row.bindings.ErrorMessage.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedBy.label}" id="c18" rendered="false">
+                <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedBy.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedBy.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedBy.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedBy.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedBy.tooltip}" id="it17">
+                  <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedBy.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedDate.label}" id="c19" rendered="false">
+                <af:inputDate value="#{row.bindings.LastUpdatedDate.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedDate.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedDate.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedDate.displayWidth}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedDate.tooltip}" id="id3">
+                  <f:validator binding="#{row.bindings.LastUpdatedDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.LastUpdatedDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.Origin.label}" id="c20" rendered="false">
+                <af:inputText value="#{row.bindings.Origin.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.Origin.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.Origin.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.Origin.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.Origin.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.Origin.tooltip}" id="it18">
+                  <f:validator binding="#{row.bindings.Origin.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxAmount.label}" id="c21" rendered="false">
+                <af:inputText value="#{row.bindings.TaxAmount.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxAmount.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxAmount.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxAmount.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxAmount.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxAmount.tooltip}" id="it19">
+                  <f:validator binding="#{row.bindings.TaxAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxAmount.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxRate.label}" id="c22" rendered="false">
+                <af:inputText value="#{row.bindings.TaxRate.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxRate.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxRate.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxRate.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxRate.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxRate.tooltip}" id="it20">
+                  <f:validator binding="#{row.bindings.TaxRate.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XxhceHeSmsLinesEOVO1.hints.TaxRate.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.XxhceHeSmsLinesEOVO1.hints.TicketLineStatus.label}" id="c23" rendered="false">
+                <af:inputText value="#{row.bindings.TicketLineStatus.inputValue}"
+                              label="#{bindings.XxhceHeSmsLinesEOVO1.hints.TicketLineStatus.label}"
+                              required="#{bindings.XxhceHeSmsLinesEOVO1.hints.TicketLineStatus.mandatory}"
+                              columns="#{bindings.XxhceHeSmsLinesEOVO1.hints.TicketLineStatus.displayWidth}"
+                              maximumLength="#{bindings.XxhceHeSmsLinesEOVO1.hints.TicketLineStatus.precision}"
+                              shortDesc="#{bindings.XxhceHeSmsLinesEOVO1.hints.TicketLineStatus.tooltip}" id="it21">
+                  <f:validator binding="#{row.bindings.TicketLineStatus.validator}"/>
+                </af:inputText>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelGroupLayout>
+        <f:facet name="toolbar">
+          <af:toolbar id="t3">
+            <af:button text="#{viewcontrollerBundle.ADD}" id="b4" disabled="#{!(bindings.SiteDescription.attributeValue != null and 
+            bindings.CustomerShipToDesc.attributeValue !=null and bindings.CustomerBillToDesc.attributeValue != null and bindings.Type.attributeValue != null
+            and bindings.PriceList.attributeValue != null)}"
+                       actionListener="#{pageFlowScope.ServiceBean.addDetailAL}"
+                       partialTriggers="siteDescriptionId customerShipToDescId customerBillToDescId soc1 priceListId"/>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:button text="#{viewcontrollerBundle.SAVE}" id="b6" disabled="#{!(bindings.SiteDescription.attributeValue != null and 
+            bindings.CustomerShipToDesc.attributeValue != null and bindings.CustomerBillToDesc.attributeValue != null and bindings.Type.attributeValue != null
+            and bindings.PriceList.attributeValue != null)}"
+                       actionListener="#{pageFlowScope.ServiceBean.saveAL}"
+                       partialTriggers="siteDescriptionId customerShipToDescId customerBillToDescId soc1 priceListId"/>
+            <af:spacer width="1150" height="10" id="s4"/>
+          </af:toolbar>
+        </f:facet>
+      </af:showDetailItem>
+    </af:panelAccordion>
+     <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="immediate"
+               binding="#{pageFlowScope.ServiceBean.deletePopupProp}">
+      <af:dialog id="d1" type="none">
+        <af:panelGroupLayout id="pgl6">
+          <af:outputText value="#{viewcontrollerBundle.ARE_YOU_WANT_TO_DELETE_THE_RECORD__}" id="ot1"/>
+        </af:panelGroupLayout>
+        <f:facet name="buttonBar">
+          <af:toolbar id="t2">
+            <af:button text="#{viewcontrollerBundle.YES}" id="b1"
+                       actionListener="#{pageFlowScope.ServiceBean.deleteConfirmAL}"/>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:button text="#{viewcontrollerBundle.NO}" id="b7"
+                       actionListener="#{pageFlowScope.ServiceBean.cancelConfirmAL}"/>
+          </af:toolbar>
+        </f:facet>
+      </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2" contentDelivery="immediate"
+              binding="#{pageFlowScope.ServiceBean.saveMissingPopupProp}">
+      <af:dialog id="d2" type="none">
+        <f:facet name="buttonBar">
+          <af:toolbar id="t5">
+            <af:button text="#{viewcontrollerBundle.YES}" id="b8"
+                       actionListener="#{pageFlowScope.ServiceBean.confirmSaveAL}"/>
+            <af:spacer width="10" height="10" id="s2"/>
+            <af:button text="#{viewcontrollerBundle.NO}" id="b9"
+                       actionListener="#{pageFlowScope.ServiceBean.cancelConfirmSaveAL}"/>
+          </af:toolbar>
+        </f:facet>
+        <af:panelGroupLayout id="pgl4">
+          <af:outputText value="#{viewcontrollerBundle.SOME_ROWS_ARE_HAVING_MISSING_DATA__DO_YOU_WANT_PROCEED_TO_DELETE_RECORDS_}" id="ot2"/>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

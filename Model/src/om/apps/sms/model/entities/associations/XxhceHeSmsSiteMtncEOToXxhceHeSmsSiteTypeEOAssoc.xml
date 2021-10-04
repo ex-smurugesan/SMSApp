@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XxhceHeSmsSiteMtncEOToXxhceHeSmsSiteTypeEOAssoc"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="XxhceHeSmsSiteMtncEO"
+    Cardinality="1"
+    Source="true"
+    Owner="om.apps.sms.model.entities.XxhceHeSmsSiteMtncEO"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="XxhceHeSmsSiteMtncEO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsSiteMtncEO.SiteId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="XxhceHeSmsSiteTypeEO"
+    Cardinality="-1"
+    Owner="om.apps.sms.model.entities.XxhceHeSmsSiteTypeEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="XxhceHeSmsSiteTypeEO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="om.apps.sms.model.entities.XxhceHeSmsSiteTypeEO.SiteId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

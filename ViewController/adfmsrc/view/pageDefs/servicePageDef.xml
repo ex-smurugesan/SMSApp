@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="servicePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="servicetaskflow1" taskFlowId="/WEB-INF/servicetaskflow.xml#servicetaskflow" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <methodAction id="isEBSUser" RequiresUpdateModel="true" Action="invokeMethod" MethodName="isEBSUser"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="SMSAMDataControl.dataProvider"
+                  ReturnName="data.SMSAMDataControl.methodResults.isEBSUser_isEBSUser_dataControl_dataProvider_isEBSUser_result">
+      <NamedData NDName="userName" NDValue="#{securityContext.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getInstanceName" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getInstanceName"
+                  IsViewObjectMethod="false" DataControl="SMSAMDataControl"
+                  InstanceName="SMSAMDataControl.dataProvider"
+                  ReturnName="data.SMSAMDataControl.methodResults.getInstanceName_getInstanceName_dataControl_dataProvider_getInstanceName_result"/>
+  </bindings>
+</pageDefinition>
